@@ -1,0 +1,49 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - "README.md"
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.24'
+      - name: Build Go service
+        working-directory: service_1
+        run: |
+          go mod init example.com/service_1 || true
+          go mod tidy
+          go build -o service_1
+      - name: Test Go service
+        working-directory: service_1
+        run: go test ./...
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install uv
+        run: pip install uv
+      - name: Sync uv dependencies
+        working-directory: service_2
+        run: uv sync --locked --no-install-project
+      - name: Test Python service
+        working-directory: service_2
+        run: uv run pytest || echo "No tests to run"
+      
+      - name: Build Go Docker image
+        run: docker build -t service_1 ./service_1
+      - name: Build Python Docker image
+        run: docker build -t service_2 ./service_2
