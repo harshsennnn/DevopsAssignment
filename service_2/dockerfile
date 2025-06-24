@@ -1,0 +1,17 @@
+FROM ghcr.io/astral-sh/uv:python3.14-rc-bookworm
+
+ENV UV_COMPILE_BYTECODE=1
+
+WORKDIR /app
+
+COPY pyproject.toml uv.lock ./
+
+# Install dependencies only (not the project itself) to optimize cache usage
+RUN uv sync --locked --no-install-project
+
+COPY . .
+
+# Install the project itself
+RUN uv sync --locked
+
+CMD ["uv", "run","app.py"]
