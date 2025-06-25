@@ -43,13 +43,6 @@ jobs:
         working-directory: service_2
         run: uv run pytest || true # As we do not have tests yet
 
-      - name: Build Go Docker image
-        run: docker build -t microservice/harshsen:service1:latest ./service_1
-      - name: Build Python Docker image
-        run: docker build -t microservice/harshsen:service2:latest ./service_2
-      - name: Build Nginx Docker image
-        run: docker build -t microservice/harshsen:nginx:latest ./nginx
-
   push-to-dockerhub:
     runs-on: ubuntu-latest
     needs: build-and-test
@@ -64,13 +57,13 @@ jobs:
           password: ${{ secrets.DOCKER_PASS }}
       - name: Build and push Go Docker image
         run: |
-          docker build -t harshsen/microservice:service1:latest ./service_1
-          docker push harshsen/microservice:service1:latest
+          docker build -t harshsen/microservice/service1:latest ./service_1
+          docker push harshsen/microservice/service1:latest
       - name: Build and push Python Docker image
         run: |
-          docker build -t harshsen/microservice:service2:latest ./service_2
-          docker push harshsen/microservice:service2:latest
+          docker build -t harshsen/microservice/service2:latest ./service_2
+          docker push harshsen/microservice/service2:latest
       - name: Build and push Nginx Docker image
         run: |
-          docker build -t harshsen/microservice:nginx:latest ./nginx
-          docker push harshsen/microservice:nginx:latest
+          docker build -t harshsen/microservice/nginx:latest ./nginx
+          docker push harshsen/microservice/nginx:latest
