@@ -63,16 +63,16 @@ jobs:
 
       - name: Build and push Go Docker image
         run: |
-          docker build -t harshsen/microservice/service1 ./service_1
-          docker push harshsen/microservice/service1
+          docker build -t ${{ secrets.DOCKER_USER }}/microservice:service1 ./service_1
+          docker push ${{ secrets.DOCKER_USER }}/microservice:service1
       - name: Build and push Python Docker image
         run: |
-          docker build -t harshsen/microservice/service2 ./service_2
-          docker push harshsen/microservice/service2
+          docker build -t ${{ secrets.DOCKER_USER }}/microservice:service2 ./service_2
+          docker push ${{ secrets.DOCKER_USER }}/microservice:service2
       - name: Build and push Nginx Docker image
         run: |
-          docker build -t harshsen/microservice/nginx ./nginx
-          docker push harshsen/microservice/nginx
+          docker build -t ${{ secrets.DOCKER_USER }}/microservice:nginx ./nginx
+          docker push ${{ secrets.DOCKER_USER }}/microservice:nginx
 
       - name: Logout from Docker Hub
         run: docker logout
