@@ -51,19 +51,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Login to DockerHub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASS }}
+
+      - name: Echo Docker Hub Username
+        run: echo ${{ secrets.DOCKER_USER }}
+      - name: Echo GitHub SHA
+        run: echo $GITHUB_SHA
+
       - name: Build and push Go Docker image
         run: |
-          docker build -t harshsen/microservice/service1:latest ./service_1
-          docker push harshsen/microservice/service1:latest
+          docker build -t harshsen/microservice/service1 ./service_1
+          docker push harshsen/microservice/service1
       - name: Build and push Python Docker image
         run: |
-          docker build -t harshsen/microservice/service2:latest ./service_2
-          docker push harshsen/microservice/service2:latest
+          docker build -t harshsen/microservice/service2 ./service_2
+          docker push harshsen/microservice/service2
       - name: Build and push Nginx Docker image
         run: |
-          docker build -t harshsen/microservice/nginx:latest ./nginx
-          docker push harshsen/microservice/nginx:latest
+          docker build -t harshsen/microservice/nginx ./nginx
+          docker push harshsen/microservice/nginx
+
+      - name: Logout from Docker Hub
+        run: docker logout
+
+      - name: End
+        run: echo "Docker image pushed to Docker Hub successfully"
