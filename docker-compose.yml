@@ -7,14 +7,14 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - service_1
-      - service_2
+      - service1
+      - service2
     networks:
       - service-net
 
-  service_1:
+  service1:
     build: ./service_1
-    container_name: service_1
+    container_name: service1
     networks:
       - service-net
     healthcheck:
@@ -23,9 +23,9 @@ services:
       timeout: 10s
       retries: 3
 
-  service_2:
+  service2:
     build: ./service_2
-    container_name: service_2
+    container_name: service2
     networks:
       - service-net
     healthcheck:

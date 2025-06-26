@@ -5,10 +5,10 @@ WORKDIR /build
 COPY . .
 
 RUN go mod download
-RUN go build -o ./service_1
+RUN go build -o ./service1
 
 FROM gcr.io/distroless/base-debian12
 WORKDIR /app
-COPY --from=builder /build/service_1 ./service_1
+COPY --from=builder /build/service1 ./service1
 
-CMD ["/app/service_1"]
+CMD ["/app/service1"]
