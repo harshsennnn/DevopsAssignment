@@ -8,7 +8,9 @@ This project demonstrates:
 
 ---
 ## Youtube Overview
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=-Uni6-EtNb4)
+
+[![YouTube](https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/100px-YouTube_full-color_icon_%282017%29.svg.png) Watch on YouTube](https://www.youtube.com/watch?v=-Uni6-EtNb4)
+
 ---
 ## 🧭 Setup Instructions
 
