@@ -33,4 +33,7 @@ This project demonstrates:
 - ✅ Easy one-command deployment with docker-compose
 
 ## ADD ON - (GitHub Actions Workflow)
-This GitHub Actions CI pipeline automatically builds and tests both the Go and Python microservices on every push or pull request. It sets up the required environments, installs dependencies using go mod and uv, and verifies the services by running their tests. Finally, it builds the corresponding Docker images to catch any containerization errors early. This ensures code and containers stay healthy before reaching production.
+
+1. This GitHub Actions CI pipeline automatically builds and tests both the Go and Python microservices on every push or pull request. 
+
+2. Builds the docker images and pushes them to docker hub 
