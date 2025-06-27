@@ -7,7 +7,9 @@ This project demonstrates:
 - `docker-compose` setup for seamless orchestration
 
 ---
-
+## Youtube Overview
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=-Uni6-EtNb4)
+---
 ## 🧭 Setup Instructions
 
 1. **Clone this repo**:
