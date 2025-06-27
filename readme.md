@@ -32,7 +32,7 @@ This project demonstrates:
 - ✅ Go & Flask microservices containerized with Docker
 - ✅ Easy one-command deployment with docker-compose
 
-## ADD ON - (GitHub Actions Workflow)
+## ADD ON - Continuous Integration/Continuous Delivery Pipeline (Github Actions)
 
 1. This GitHub Actions CI pipeline automatically builds and tests both the Go and Python microservices on every push or pull request. 
 
